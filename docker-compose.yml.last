@@ -1,0 +1,12 @@
+version: "2"
+services: 
+  asterisk:
+    image: hibou/asterisk:13.15.0
+    volumes:
+     - "./var/conf/msmtprc:/etc/msmtprc"
+     - "./var/conf/asterisk:/ic"
+     - "./var/data/asterisk:/id"
+     - "./var/data/asterisk-spool:/ids"
+    hostname: sip
+    domainname: asx.uucp.my.id
+    network_mode: "host"
