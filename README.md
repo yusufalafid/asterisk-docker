@@ -20,17 +20,16 @@ mkdir ~/sip && cd $_
 ## extension.conf  
   
 vim ~/sip/var/conf/asterisk/extensions.conf  
-  
----  
+    
 [from-internal]  
 exten = 100,1,Answer()  
 same = n,Wait(1)  
 same = n, Playback(hello-world)  
-same = n,Hangup()  
----  
+same = n,Hangup()    
   
 ### sip.conf  
   
+---
 [general]  
 context=default  
   
