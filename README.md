@@ -29,7 +29,6 @@ same = n,Hangup()
   
 ### sip.conf  
   
----
 [general]  
 context=default  
   
