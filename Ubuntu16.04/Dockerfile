@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM ubuntu:16.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -20,15 +20,8 @@ RUN apt-get update \
 # Asterisk expects /usr/sbin/sendmail
 RUN ln -s /usr/bin/msmtp /usr/sbin/sendmail
 
-ENV SRTP_VERSION 1.4.4
-RUN cd /tmp \
-    && curl -o srtp.tgz http://kent.dl.sourceforge.net/project/srtp/srtp/${SRTP_VERSION}/srtp-${SRTP_VERSION}.tgz \
-    && tar xzf srtp.tgz
-RUN cd /tmp/srtp* \
-    && ./configure CFLAGS=-fPIC \
-    && make \
-    && make install
-
+RUN apt-get update \
+    && apt-get install libsrtp0 -y
 
 ENV ASTERISK_VERSION 14.5.0
 RUN cd /tmp && curl -o asterisk.tar.gz http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-${ASTERISK_VERSION}.tar.gz \
